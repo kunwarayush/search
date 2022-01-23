@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Box Design</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+    <img th:src="@{~/images/bg.jpeg}" />
+    .ui-autocomplete-loading {
+     background: white url('/images//bg.jpeg')right center no-repeat;
+    }
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: 'Comfortaa', cursive;
+}
+ body{
+	background: url('/images/bg.jpeg') no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+}
+
+.wrapper{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0,0.6);
+    max-width: 550px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.wrapper .input {
+    width: 85%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+  </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script th:inline="javascript">
+    $(document).ready(function() {
+        $("#searchInput").autocomplete({
+            minLength : 3,
+            source : "searchTopK",
+            select: function(event, ui) {
+					this.value = ui.item.label;
+					return false;
+				}
+
+        })
+    });
+</script>
+</head>
+<body>
+<form action="#" method="GET" enctype="multipart/form-data">
+    <div class="wrapper">
+        <input type="text" class="input" input id="searchInput"
+               placeholder="What are you looking for?">
+    </div>
+</div>
+</form>
+</body>
+</html>
