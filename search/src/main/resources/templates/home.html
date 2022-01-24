@@ -69,22 +69,26 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
     $(document).ready(function() {
         $("#searchInput").autocomplete({
             minLength : 3,
             source : "/SearchService/searchTopKStrings",
             select: function(event, ui) {
-					this.value = ui.item.label;
-					return false;
-				}
+                    event.preventDefault();
+                    $("#searchInput").val(ui.item.label);
+			},
+			focus: function(event, ui) {
+                    event.preventDefault();
+                    $("#searchInput").val(ui.item.label);
+            }
+            })
+        });
+    </script>
 
-        })
-    });
-</script>
 </head>
 <body>
-<form action="#" method="GET" enctype="multipart/form-data">
+<<form action="#" method="GET" enctype="multipart/form-data">
     <div class="wrapper">
         <input type="text" class="input"  id="searchInput"
                placeholder="What are you looking for?">
