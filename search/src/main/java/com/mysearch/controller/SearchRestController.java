@@ -14,7 +14,7 @@ public class SearchRestController {
     @Autowired
     SearchService searchService;
 
-    @GetMapping("/searchTopK")
+    @GetMapping("/searchTopKStrings")
     @ResponseBody
     public List<LabelDTO> getTop10SearchResultByString(@RequestParam("term") String searchString){
         List <LabelDTO>searchAutoSuggest = searchService.getTopKSearchLabelsFromString(searchString);

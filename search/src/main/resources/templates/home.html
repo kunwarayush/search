@@ -73,7 +73,7 @@
     $(document).ready(function() {
         $("#searchInput").autocomplete({
             minLength : 3,
-            source : "/SearchService/searchTopK",
+            source : "/SearchService/searchTopKStrings",
             select: function(event, ui) {
 					this.value = ui.item.label;
 					return false;
