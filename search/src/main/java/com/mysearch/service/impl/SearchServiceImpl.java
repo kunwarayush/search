@@ -38,22 +38,6 @@ public class SearchServiceImpl implements SearchService {
         }
     }
 
-    @Override
-    public List<String> getTopKSearchStringList(String searchString){
-        List <String>searchAutoSuggest = new ArrayList<>();
-        List<SearchDTO>searchDTOList =  getTopKSearchDTOsFromString(searchString);
-        for (SearchDTO searchDTO : searchDTOList) {
-            if (searchDTO.getSearchString().contains(searchString)) {
-                searchAutoSuggest.add(searchDTO.getSearchString());
-            }
-        }
-        if(searchAutoSuggest != null){
-            return searchAutoSuggest;
-        }else {
-            return new ArrayList<>();
-        }
-    }
-
     private List<SearchDTO>getSearchDTOListFromEntityList(List<SearchEntity>entityList){
         List<SearchDTO>dtoList = new ArrayList<>();
         for(int i = 0;i < entityList.size();i++){

@@ -73,7 +73,7 @@
     $(document).ready(function() {
         $("#searchInput").autocomplete({
             minLength : 3,
-            source : "searchTopK",
+            source : "/SearchService/searchTopK",
             select: function(event, ui) {
 					this.value = ui.item.label;
 					return false;
@@ -86,11 +86,10 @@
 <body>
 <form action="#" method="GET" enctype="multipart/form-data">
     <div class="wrapper">
-        <input type="text" class="input" input id="searchInput"
+        <input type="text" class="input"  id="searchInput"
                placeholder="What are you looking for?">
         <div class="searchbtn"><i class="fas fa-search"></i></div>
     </div>
-</div>
 </form>
 </body>
 </html>
